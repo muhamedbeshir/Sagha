@@ -660,11 +660,7 @@ const Navbar = ({ currentSection }) => {
         </Logo>
 
         {/* Navigation Menu */}
-        <NavMenu
-          isOpen={isMobileMenuOpen}
-          variants={menuVariants}
-          animate={isMobileMenuOpen ? "open" : "closed"}
-        >
+        <NavMenu>
           {navItems.map((item, index) => (
             <NavItem
               key={item.id}
@@ -716,45 +712,6 @@ const Navbar = ({ currentSection }) => {
           })}
         </ActionButtons>
 
-        {/* Mobile Menu Button */}
-        <HamburgerButton
-          onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-          aria-label="Toggle menu"
-          whileHover={{ scale: 1.1 }}
-          whileTap={{ scale: 0.9 }}
-        >
-          <AnimatePresence mode="wait">
-            {isMobileMenuOpen ? (
-              <motion.div
-                key="close"
-                initial={{ rotate: -180, opacity: 0 }}
-                animate={{ rotate: 0, opacity: 1 }}
-                exit={{ rotate: 180, opacity: 0 }}
-                transition={{ 
-                  duration: 0.3,
-                  type: "spring",
-                  stiffness: 300
-                }}
-              >
-                <X size={24} />
-              </motion.div>
-            ) : (
-              <motion.div
-                key="menu"
-                initial={{ rotate: 180, opacity: 0 }}
-                animate={{ rotate: 0, opacity: 1 }}
-                exit={{ rotate: -180, opacity: 0 }}
-                transition={{ 
-                  duration: 0.3,
-                  type: "spring",
-                  stiffness: 300
-                }}
-              >
-                <Menu size={24} />
-              </motion.div>
-            )}
-          </AnimatePresence>
-        </HamburgerButton>
       </NavContent>
     </NavContainer>
   );
